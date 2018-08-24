@@ -1,0 +1,23 @@
+# datalake-ioc configuration for development only
+version: '2'
+services:
+  0-simple:
+    build:
+      context: .
+      dockerfile: ./0-simple.Dockerfile
+    container_name: 0-simple
+  1-cached:
+    build:
+      context: .
+      dockerfile: ./1-cached.Dockerfile
+    container_name: 1-cached
+  2-alpine:
+    build:
+      context: .
+      dockerfile: ./2-alpine.Dockerfile
+    container_name: 2-alpine
+  3-slim:
+    build:
+      context: .
+      dockerfile: ./3-slim.Dockerfile
+    container_name: 3-slim
