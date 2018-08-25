@@ -40,7 +40,7 @@ Well, have you tried building it? Unless cached, it will take MUCH longer than w
 As to why this is the case: if you look into `Pipfile` you will find `pandas` library in there.
 The thing about `pandas` and `numpy` (its dependency) is that is a C extension, i.e. it has to be compiled.
 In case of glibc-based debian system you can install the already precompiled version (wheel) directly from PyPI.
-Wheel format does not support `musl`-based distros, such as Alpine.
+Wheel format does not support `musl`-based distros, such as Alpine (https://github.com/pypa/manylinux/issues/37).
 So, on Alpine we have to compile every C extension.
 Its not unusual to have a big app withhout any C extension complex enough for it to be a problem, but as soon as you do include `numpy` or something similar you are looking at extra 10+ minutes added to your build times.
 
