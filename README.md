@@ -6,10 +6,10 @@ Example uses `pipenv`, which you probably should be using, but the same principl
 
 ## Fixing the build caching
 
-So your tyical Dockerfile for python app may look like [0-simple.Dockerfile](0-simple.Dockerfile).
+So your typical Dockerfile for python app may look like [0-simple.Dockerfile](0-simple.Dockerfile).
 And there is a problem with that. Every time ANYTHING in your repository is modified whole thing is being rebuilt.
 That is including the dependency installation step, i.e. accessing external resources and maybe even compiling some stuff.
-So basicilly all the time consuming stuff of your build.
+So basically all the time consuming stuff of your build.
 
 [1-cached.Dockerfile](1-cached.Dockerfile) is a fixed version.
 
@@ -72,3 +72,8 @@ Choosing solution no. 2 you have to define a second dockerfile that will either:
  * derived using `FROM`, with just `pipenv install --system --deploy --dev`
 
 and the last option means that no matter which file changes, the `pipenv install --system --deploy --dev` will have to be run.
+
+The more refined than "copy&pasting" Dockerfile is to use [`ARG`](https://docs.docker.com/engine/reference/builder/#arg) instruction.
+This way you will have a single Dockerfile to maintain.
+Example of such file can be found in [4-slim-dev.Dockerfile](4-slim-dev.Dockerfile).
+You can run `docker build -f 4-slim-dev.Dockerfile . --build-arg DEV=true` to get development image, or `docker build -f 4-slim-dev.Dockerfile .` for production one (note the same Dockerfile is used).
