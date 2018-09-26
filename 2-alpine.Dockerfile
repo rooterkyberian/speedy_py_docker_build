@@ -10,7 +10,7 @@ RUN apk add --no-cache --virtual=build_dependencies \
 
 COPY Pipfile Pipfile.lock /app/
 WORKDIR /app
-RUN pipenv install --system  --deploy
+RUN pipenv install --system --deploy
 
 RUN apk del build_dependencies
 

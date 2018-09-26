@@ -47,3 +47,8 @@ Its not unusual to have a big app withhout any C extension complex enough for it
 
 Ok, but you still want to trim off some fat. In our, Python, case the easiest solution is to use `slim` version of Python docker image.
 In [3-slim.Dockerfile](3-slim.Dockerfile), we are using `python:slim`, which is also Debian-based, but without extra bits.
+
+## .dockerignore
+
+Especially if you `COPY` the root directory of your project you will want to use the [`.dockerignore`](https://docs.docker.com/engine/reference/builder/#dockerignore-file).
+Not only it will prevent from junk getting into your final image, it will prevent it from poisoning the build cache.
