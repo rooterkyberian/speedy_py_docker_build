@@ -1,6 +1,6 @@
 FROM python:3.7-alpine
 
-RUN pip install pip==18.0 pipenv==2018.7.1
+RUN pip install pip==18.1 pipenv==2018.10.13
 
 # stuff required for C extensions (namely: pandas)
 RUN apk add --no-cache --virtual=build_dependencies \

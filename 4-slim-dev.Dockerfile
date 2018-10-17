@@ -1,6 +1,6 @@
 FROM python:3.7-slim
 
-RUN pip install pip==18.0 pipenv==2018.7.1
+RUN pip install pip==18.1 pipenv==2018.10.13
 
 COPY Pipfile Pipfile.lock /app/
 WORKDIR /app
